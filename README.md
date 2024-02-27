@@ -18,6 +18,8 @@ Attributes
 
 ## Entity 3 - Statistics
 Attributes
+- Year
+- Player
 - Hits
 - OPS (On base percentage + slugging)
 - Runs
