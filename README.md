@@ -12,9 +12,9 @@ Attributes
 
 ## Entity 2 - Player
 Attributes
-    - Name
-    - JerseyNumber
-    - Year FOREIGN KEY
+- Name
+- JerseyNumber
+- Year FOREIGN KEY
 
 ## Entity 3 - Statistics
 Attributes
@@ -23,9 +23,9 @@ Attributes
 - Runs
 
 ## Relationships
-Team-Includes-Player
-Player-Has-Statistics
-Team-Has-Statistics
+- Team-Includes-Player
+- Player-Has-Statistics
+- Team-Has-Statistics
 
 # Glossary Information
 ## Attribute types
