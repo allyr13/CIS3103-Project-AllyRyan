@@ -5,10 +5,10 @@ We connect baseball statistics to a World Series Championship. We use the Red So
 # Entities, relationships, attributes
 ## Entity 1 - Team
 Attributes 
-    - Year PRIMARY KEY
-    - Total runs scored 
-    - Total hits collected 
-    - Total OPS 
+- Year PRIMARY KEY
+- Total runs scored 
+- Total hits collected 
+- Total OPS 
 
 ## Entity 2 - Player
 Attributes
@@ -18,9 +18,9 @@ Attributes
 
 ## Entity 3 - Statistics
 Attributes
-    - Hits
-    - OPS (On base percentage + slugging)
-    - Runs
+- Hits
+- OPS (On base percentage + slugging)
+- Runs
 
 ## Relationships
 Team-Includes-Player
