@@ -32,8 +32,11 @@ Attributes
 # Glossary Information
 ## Attribute types
 - Name: NAME
+- PlayerName: NAME
 - JerseyNumber: SMALLINT UNSIGNED
 - Year: DATE
+- PlayerYear: DATE
+- StatYear: DATE
 - Hits: SMALLINT UNSIGNED
 - OPS: FLOAT(4, 3) UNSIGNED
 - Runs: SMALLINT UNSIGNED
@@ -57,3 +60,51 @@ Attributes
 The data includes three csv files that each contain extended statistics for the Red Sox in their latest 3 World Series Championships (2007,2013, 2018). The data includes values as listed in the following line
     Rk,Pos,Name,Age,G,PA,AB,R,H,2B,3B,HR,RBI,SB,CS,BB,SO,BA,OBP,SLG,OPS,OPS+,TB,GDP,HBP,SH,SF,IBB,Name-additional
 
+
+## Relationship maxima and minima
+### Team-Includes-Player
+#### Minima
+- one-one
+#### Maxima
+- singular-plural
+### Player-Has-Statistics
+#### Minima
+- one-zero
+#### Maxima
+- singular-plural
+### Team-Has-Statistics
+#### Minima
+- one-one
+#### Maxima
+- singular-singular
+
+
+
+## Attribute maxima and minima
+- Year - plural, required
+- PlayerYear - plural, required
+- Total Runs Scored - singular, required
+- Total Hits - singular, required
+- Total OPS - singular, required
+- Name - plural, required
+- JerseyNumber - plural, required
+- PlayerName - plural, required
+- Hits - plural, required
+- OPS - plural, required
+- Runs - plural, required
+
+
+## Identify unique attribute
+- Year - unique 
+- PlayerYear - unique
+
+## Strong and weak entities
+- Team (Strong)
+- Player (Strong)
+- Statistics (Weak)
+
+## Identifying relationships
+- Players-Have-Statistics
+
+## ER Diagram
+![ER Diagram](ERDiagram.jpeg)
