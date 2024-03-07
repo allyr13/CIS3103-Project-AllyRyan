@@ -5,7 +5,7 @@ We connect baseball statistics to a World Series Championship. We use the Red So
 # Entities, relationships, attributes
 ## Entity 1 - Team
 Attributes 
-- Year PRIMARY KEY
+- YearDate PRIMARY KEY
 - Total runs scored 
 - Total hits collected 
 - Total OPS 
@@ -14,12 +14,12 @@ Attributes
 Attributes
 - Name
 - JerseyNumber
-- Year FOREIGN KEY
+- PlayerYear FOREIGN KEY
 
 ## Entity 3 - Statistics
 Attributes
-- Year
-- Player
+- StatYear
+- PlayerName
 - Hits
 - OPS (On base percentage + slugging)
 - Runs
@@ -34,7 +34,7 @@ Attributes
 - Name: NAME
 - PlayerName: NAME
 - JerseyNumber: SMALLINT UNSIGNED
-- Year: DATE
+- YearDate: DATE
 - PlayerYear: DATE
 - StatYear: DATE
 - Hits: SMALLINT UNSIGNED
@@ -48,7 +48,7 @@ Attributes
 ## Document names, synonyms, descriptions
 - Name/playerName - Name of player on Red Sox
 - JerseyNumber - The number the player wears when he plays
-- Year/date - year of the specific team, year a specific player was on that year's team
+- YearDate/date - year of the specific team, year a specific player was on that year's team
 - Hits/basehit - a statistic describing a basehit in baseball
 - OPS/on base plus slugging - on base plus slugging is a calculated statistic that combines on base percentage with slugging percentage
 - Runs - the number of times a player crosses home plate to score a run for the Red Sox
@@ -81,7 +81,7 @@ The data includes three csv files that each contain extended statistics for the 
 
 
 ## Attribute maxima and minima
-- Year - plural, required
+- YearDate - plural, required
 - PlayerYear - plural, required
 - Total Runs Scored - singular, required
 - Total Hits - singular, required
@@ -95,7 +95,7 @@ The data includes three csv files that each contain extended statistics for the 
 
 
 ## Identify unique attribute
-- Year - unique 
+- YearDate - unique 
 - PlayerYear - unique
 
 ## Strong and weak entities

@@ -1,0 +1,29 @@
+CREATE DATABASE RedSox;
+
+USE RedSox;
+
+CREATE TABLE Team(
+    YearDate SMALLINT UNSIGNED,
+    TotalRunScored SMALLINT NOT NULL,
+    TotalHits SMALLINT NOT NULL,
+    TotalOPS FLOAT(4, 3) NOT NULL,
+    PRIMARY KEY (YearDate)
+);
+
+CREATE TABLE Player(
+    Name VARCHAR(60) NOT NULL,
+    JerseyNumber SMALLINT NOT NULL,
+    PlayerYear SMALLINT UNSIGNED,
+    PRIMARY KEY (PlayerYear),
+    FOREIGN KEY (PlayerYear) REFERENCES Team(YearDate)
+);
+
+CREATE TABLE Stats(
+    StatYear SMALLINT UNSIGNED NOT NULL,
+    PlayerName VARCHAR(60) NOT NULL,
+    Hits SMALLINT NOT NULL,
+    OPS FLOAT(4,3) NOT NULL,
+    Runs SMALLINT NOT NULL,
+    FOREIGN KEY (StatYear) REFERENCES Player(PlayerYear),
+    FOREIGN KEY (StatYear) REFERENCES Team(YearDate)
+);
