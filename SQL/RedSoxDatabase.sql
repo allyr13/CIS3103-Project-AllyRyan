@@ -38,7 +38,7 @@ CREATE TABLE Stats(
         ON DELETE CASCADE
         ON UPDATE RESTRICT,
     
-	--6B
+	-- 6B
     FOREIGN KEY (StatYear) REFERENCES Team(YearDate)
         -- 7B
         ON DELETE CASCADE
