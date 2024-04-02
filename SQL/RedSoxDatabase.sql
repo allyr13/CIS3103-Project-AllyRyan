@@ -6,6 +6,7 @@ USE RedSox;
 -- 7C: seen throughout each attribute creation
 -- 7D: seen throughout each attribute creation
 CREATE TABLE Team(
+    TeamName VARCHAR(50) - plural, required
     YearDate SMALLINT UNSIGNED,
     TotalRunScored SMALLINT NOT NULL,
     TotalHits SMALLINT NOT NULL,

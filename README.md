@@ -82,6 +82,7 @@ The data includes three csv files that each contain extended statistics for the 
 
 
 ## Attribute maxima and minima
+- TeamName VARCHAR(50) - plural, required
 - YearDate - plural, required
 - PlayerYear - plural, required
 - Total Runs Scored - singular, required
@@ -100,9 +101,9 @@ The data includes three csv files that each contain extended statistics for the 
 - PlayerYear - unique
 
 ## Strong and weak entities
-- Team (Strong)
-- Player (Strong)
-- Statistics (Weak)
+- Team (Strong) - has primary key as YearDate
+- Player (Strong) - has primary key as PlayerDate
+- Statistics (Weak) - does not have a primary key
 
 ## Identifying relationships
 - Players-Have-Statistics
