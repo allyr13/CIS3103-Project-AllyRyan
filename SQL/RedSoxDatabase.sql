@@ -1,12 +1,12 @@
-drop database if exists RedSox;
-CREATE DATABASE RedSox;
+drop database if exists WSChampions;
+CREATE DATABASE WSChampions;
 
-USE RedSox;
+USE WSChampions;
 -- 5A (Team, Player)
 -- 7C: seen throughout each attribute creation
 -- 7D: seen throughout each attribute creation
 CREATE TABLE Team(
-    TeamName VARCHAR(50) - plural, required
+	TeamName VARCHAR(50) NOT NULL, 
     YearDate SMALLINT UNSIGNED,
     TotalRunScored SMALLINT NOT NULL,
     TotalHits SMALLINT NOT NULL,
@@ -48,3 +48,5 @@ CREATE TABLE Stats(
 );
 -- 6C no many-many relationships
 -- 5D no direct supertype/subtype entities currently
+
+
