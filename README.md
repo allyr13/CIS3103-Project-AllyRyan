@@ -1,6 +1,7 @@
 # CIS3103-Project-AllyRyan
 CIS-3103-Database Program Development Final Project 
-We connect baseball statistics to a World Series Championship. We use the Red Sox statistics from the last three World Series Championship years. We keep track of team, player, and statistics. Each team has players, aggregate statistics, and a year. Each player has a name, jersey number, and year. The statistics we value are number of hits, on base percentage, and number of runs. Each team has up to 26 players. Each player must have a unique jersey number in each year. Each jersey number must be 1 or 2 digits. We are seeking to find three minimum values (hits, runs, OPS) that win a team (Red Sox in particular) a World Series. 
+
+We connect baseball statistics beteween the last 23 World Series champions. We keep track of team, player, and statistics. Each team has players, aggregate statistics, and a year. Each player has a name, jersey number, and year. The statistics we value are number of hits, on base percentage, and number of runs. Each team has up to 26 players. Each player must have a unique jersey number in each year. Each jersey number must be 1 or 2 digits. We are seeking to find a correlation between the champion's statistics (as stated above) that shows whether there is a minimum value visualized between the winners in the last 24 years. 
 
 # Entities, relationships, attributes
 ## Entity 1 - Team
