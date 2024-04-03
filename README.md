@@ -1,7 +1,21 @@
 # CIS3103-Project-AllyRyan
 CIS-3103-Database Program Development Final Project 
 
-We connect baseball statistics beteween the last 23 World Series champions. We keep track of team, player, and statistics. Each team has players, aggregate statistics, and a year. Each player has a name, jersey number, and year. The statistics we value are number of hits, on base percentage, and number of runs. Each team has up to 26 players. Each player must have a unique jersey number in each year. Each jersey number must be 1 or 2 digits. We are seeking to find a correlation between the champion's statistics (as stated above) that shows whether there is a minimum value visualized between the winners in the last 24 years. 
+We connect baseball statistics beteween the last 23 World Series champions. We keep track of team, player, and statistics. Each team has players, aggregate statistics, and a year. Each player has a name, team name, and year. The statistics we value are number of hits, on base percentage, and number of runs. Each team has up to 26 players. Each player must have a unique team and name in each year. We excluded all pitchers from the offensive statistics. We are seeking to find a correlation between the champion's statistics (as stated above) that shows whether there is a minimum value visualized between the winners in the last 24 years. 
+
+# How to run the implementation
+- Go to MySQLWorkbench
+- Copy and paste the code from the file "WSDatabase.sql"
+- Go to "mysql-connection.py" and run the code in the command line
+- Return to MySQL Workbench
+- Open new tab
+- Copy and paste the sql code as seen below
+- Perform the queries **separately** to retreive both data returns
+`SELECT * FROM TEAM;`
+`SELECT * FROM Player;`
+
+
+
 
 # Entities, relationships, attributes
 ## Entity 1 - Team
@@ -14,7 +28,7 @@ Attributes
 ## Entity 2 - Player
 Attributes
 - Name
-- JerseyNumber
+- Position
 - PlayerYear FOREIGN KEY
 
 ## Entity 3 - Statistics
@@ -34,7 +48,8 @@ Attributes
 ## Attribute types
 - Name: NAME
 - PlayerName: NAME
-- JerseyNumber: SMALLINT UNSIGNED
+- Position: VARCHAR(3)
+- TeamName: VARCHAR(50)
 - YearDate: DATE
 - PlayerYear: DATE
 - StatYear: DATE
@@ -48,7 +63,8 @@ Attributes
 
 ## Document names, synonyms, descriptions
 - Name/playerName - Name of player on Red Sox
-- JerseyNumber - The number the player wears when he plays
+- Position - player's position on field
+- TeamName - name of the team referring to
 - YearDate/date - year of the specific team, year a specific player was on that year's team
 - Hits/basehit - a statistic describing a basehit in baseball
 - OPS/on base plus slugging - on base plus slugging is a calculated statistic that combines on base percentage with slugging percentage
@@ -82,6 +98,7 @@ The data includes three csv files that each contain extended statistics for the 
 
 
 ## Attribute maxima and minima
+- Position VARCHAR(3) - singular, required
 - TeamName VARCHAR(50) - plural, required
 - YearDate - plural, required
 - PlayerYear - plural, required
@@ -110,3 +127,4 @@ The data includes three csv files that each contain extended statistics for the 
 
 ## ER Diagram
 ![ER Diagram](ERDiagram.jpeg)
+

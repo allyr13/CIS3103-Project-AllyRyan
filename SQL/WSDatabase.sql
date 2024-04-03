@@ -15,14 +15,16 @@ CREATE TABLE Team(
 );
 -- 5A
 CREATE TABLE Player(
-    Name VARCHAR(60) NOT NULL,
-    JerseyNumber SMALLINT,
+    PlayerName VARCHAR(60) NOT NULL,
+    PlayerTeam VARCHAR(50) NOT NULL,
+    Position VARCHAR(3) NOT NULL,
     PlayerYear SMALLINT UNSIGNED,
-    PRIMARY KEY (PlayerYear, JerseyNumber),
+    PRIMARY KEY (PlayerName, PlayerTeam, PlayerYear),
     -- 6A
     FOREIGN KEY (PlayerYear) REFERENCES Team(YearDate)
-        ON DELETE RESTRICT
-        ON UPDATE RESTRICT
+         -- ON DELETE RESTRICT
+         -- ON UPDATE CASCADE
+	
 );
 -- 5C (Stats)
 -- 7A 
@@ -34,19 +36,21 @@ CREATE TABLE Stats(
     OPS FLOAT(4,3) NOT NULL,
     Runs SMALLINT NOT NULL,
     -- 6A
-    FOREIGN KEY (StatYear) REFERENCES Player(PlayerYear)
+    FOREIGN KEY (StatYear) REFERENCES Player(PlayerYear),
         -- 7B
-        ON DELETE CASCADE
-        ON UPDATE RESTRICT,
+        -- ON DELETE CASCADE
+        -- ON UPDATE CASCADE,
     
 	-- 6B
     FOREIGN KEY (StatYear) REFERENCES Team(YearDate)
         -- 7B
-        ON DELETE CASCADE
-        ON UPDATE RESTRICT
+        -- ON DELETE CASCADE
+        -- ON UPDATE CASCADE
     
 );
 -- 6C no many-many relationships
 -- 5D no direct supertype/subtype entities currently
 
-
+-- Run the following commands to check data has been pushed (after connecting & using the sql.python file)
+SELECT * FROM TEAM;
+SELECT * FROM Player;
