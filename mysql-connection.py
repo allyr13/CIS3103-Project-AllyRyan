@@ -2,14 +2,30 @@ import mysql.connector
 from mysql.connector import errorcode
 import csv
 import os
+import json
+import sys
+
+def getConfigFile():
+    if __name__ == "__main__":  
+        ## Get the configuration file 
+        configFileLocation = sys.argv[1]  
+        print("Configuration file location: {0}".format(configFileLocation))   
+        configFile = open(configFileLocation)
+        configFileJSON = json.load(configFile)
+        return configFileJSON
+    else:
+        configjson = {
+            "user": "root",
+            "password": "redsox2004!",
+            "host": "127.0.0.1",
+            "database": "WSChampions"
+        }
+        return configjson
 
 try:
-    reservationConnection = mysql.connector.connect(
-        user= "root",
-        password="BisonA13",
-        host="127.0.0.1",
-        database="WSChampions"
-    )
+    config = getConfigFile()
+    reservationConnection = mysql.connector.connect(**config)
+    teamCursor = reservationConnection.cursor()
     
     
 
