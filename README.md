@@ -14,6 +14,10 @@ We connect baseball statistics beteween the last 23 World Series champions. We k
 `SELECT * FROM TEAM;`
 `SELECT * FROM Player;`
 
+# Queries
+- `SELECT * FROM TEAM`;
+- `SELECT * FROM Player`;
+
 
 
 
@@ -127,4 +131,6 @@ The data includes three csv files that each contain extended statistics for the 
 
 ## ER Diagram
 ![ER Diagram](ERDiagram.jpeg)
+
+
 
