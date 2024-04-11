@@ -15,8 +15,18 @@ We connect baseball statistics beteween the last 23 World Series champions. We k
 `SELECT * FROM Player;`
 
 # Queries
-- `SELECT * FROM TEAM`;
-- `SELECT * FROM Player`;
+- SELECT * FROM TEAM;
+- SELECT * FROM Player;
+
+- SELECT TeamName, YearDate
+FROM Team
+WHERE TotalOPS > 0.730;
+
+- SELECT TeamName, YearDate
+FROM Team
+WHERE TotalHits > 1600;
+WS winner has average of 177 games played 
+so greater than 1600 means averaging over 9 hits a game
 
 
 
