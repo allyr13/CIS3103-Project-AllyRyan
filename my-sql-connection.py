@@ -40,8 +40,8 @@ except mysql.connector.Error as err:
 teamCursor = reservationConnection.cursor()
 
 
-def insertTeam(name, year, runs, hits, ops):
-    val = "INSERT INTO Team VALUES ('" + name + "'," + str(year) + "," + str(runs) + "," + str(hits) + "," + "{:.3f}".format(ops) + ");"
+def insertTeam(name, year):
+    val = "INSERT INTO Team (TeamName, YearDate) VALUES ('" + name + "'," + str(year) + ");"
     print(val)
     return val
 
@@ -49,6 +49,12 @@ def insertPlayer(name, playerTeam, position, year):
     val = "INSERT INTO Player VALUES ('" + name + "','" + playerTeam + "','" + position + "'," + str(year) + ");"
     print(val)
     return val
+
+def insertStatistic(statYear, playerName, playerTeam, ab, hits, ops, runs, plateAppearances):
+    val = "INSERT INTO Stats (StatYear, PlayerName, PlayerTeam, AtBats, Hits, OPS, Runs, PlateAppearances) VALUES  (" + str(statYear) + ",'" + playerName + "','" + playerTeam + "'," + str(ab) + "," + str(hits) + "," + str(ops)  + "," + str(runs) + "," + str(plateAppearances) + ");"
+    print(val)
+    return val
+
 
 def getFiles(folderPath):
     # For loop through each data file in "Data" folder
@@ -58,26 +64,10 @@ def getFiles(folderPath):
 
 def addAllTeams(item):
     with open('./Data/' + item, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        totalRuns = 0
-        totalHits = 0
-        totalOPS = 0.0
-        rows = 0
-        for row in reader:
-            runs = row['R']
-            totalRuns = totalRuns + int(runs)
-            totalHits = totalHits + int(row['H'])
-            if (row['OPS']!= ''):
-                ops = row['OPS']
-            
-            totalOPS = totalOPS + float(ops)
-            rows = rows + 1
-
-        totalOPS = totalOPS / rows
-        playerTeam = item[0:4]
+        teamYear = item[0:4]
         periodIdx = item.index(".")
-        playerYear = item[4:periodIdx]
-        team = insertTeam(playerYear, playerTeam, totalRuns, totalHits, totalOPS)
+        teamName = item[4:periodIdx]
+        team = insertTeam(teamName, teamYear)
         teamCursor.execute(team)
         print("Team executed to DB")
 
@@ -87,18 +77,40 @@ def addAllPlayers(item):
         for row in reader:
             name = row['Name']
             pos = row['Pos']
+            
             playerYear = item[0:4]
             periodIdx = item.index(".")
             playerTeam = item[4:periodIdx]
-            player = insertPlayer(name,playerTeam,pos,playerYear)
+            player = insertPlayer(name, playerTeam, pos, playerYear)
+
             teamCursor.execute(player)
             print("Player executed to DB")
+            
+
             #print(row['Rk'], row['Pos'])
+def addAllStats(item):
+    with open('./Data/' + item, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            playerName = row['Name']
+            ops = row['OPS']
+            hits = row['H']
+            runs = row['R']
+            atBats = row['AB']
+            plateAppearances = row['AB']
+            statYear = item[0:4]
+            periodIdx = item.index(".")
+            playerTeam = item[4:periodIdx]
+            
+            statistics = insertStatistic(statYear, playerName, playerTeam, atBats, hits, ops, runs, plateAppearances)
+            teamCursor.execute(statistics)
+            print("Stats executed to DB")
 
 def executeToDatabase(dir_list):
     for item in dir_list:
         addAllTeams(item)
         addAllPlayers(item)
+        addAllStats(item)
 
 
 executeToDatabase(getFiles('./Data'))

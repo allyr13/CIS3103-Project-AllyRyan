@@ -17,16 +17,47 @@ We connect baseball statistics beteween the last 23 World Series champions. We k
 # Queries
 - SELECT * FROM TEAM;
 - SELECT * FROM Player;
+- SELECT Team.YearDate, TeamName,
+    SUM(Stats.Hits) AS TotalHits,
+    SUM(Stats.AtBats) AS TotalAtBats,
+    ROUND(SUM(Stats.Hits) / SUM(Stats.AtBats), 3) AS TeamBattingAverage
+    FROM
+        Team
+    INNER JOIN
+        Stats ON StatYear = Team.YearDate
+    GROUP BY
+        Team.YearDate, Team.TeamName;
+
+
 
 - SELECT TeamName, YearDate
 FROM Team
 WHERE TotalOPS > 0.730;
 
-- SELECT TeamName, YearDate
-FROM Team
-WHERE TotalHits > 1600;
-WS winner has average of 177 games played 
-so greater than 1600 means averaging over 9 hits a game
+#### Selects Teams with above .280 Batting Average
+- SELECT Team.YearDate, TeamName,
+    SUM(Stats.Hits) AS TotalHits,
+    SUM(Stats.AtBats) AS TotalAtBats,
+    ROUND(SUM(Stats.Hits) / SUM(Stats.AtBats), 3) AS TeamBattingAverage
+    FROM
+        Team
+    INNER JOIN
+        Stats ON StatYear = Team.YearDate
+    GROUP BY
+        Team.YearDate, Team.TeamName
+    HAVING 
+        ROUND(SUM(Stats.Hits) / SUM(Stats.AtBats), 3) > 0.280;
+    
+#### Selects Number of Players with above 0.800 OPS
+- SELECT Team.TeamName, Team.YearDate,COUNT(*) AS PlayerAbv900OPS
+    FROM Team
+    INNER JOIN Player ON Team.YearDate = Player.PlayerYear
+    INNER JOIN Stats ON Player.PlayerName = Stats.PlayerName AND 
+        Player.PlayerTeam = Stats.PlayerTeam
+    WHERE Stats.OPS > .800 AND Team.TeamName = Stats.PlayerTeam
+    GROUP BY Team.TeamName, Team.YearDate
+    ORDER BY Team.YearDate;
+
 
 
 
