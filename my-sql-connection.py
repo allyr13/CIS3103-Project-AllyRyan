@@ -6,13 +6,15 @@ import json
 import sys
 
 def getConfigFile():
-    if __name__ == "__main__":  
-        ## Get the configuration file 
-        configFileLocation = sys.argv[1]  
-        print("Configuration file location: {0}".format(configFileLocation))   
-        configFile = open(configFileLocation)
-        configFileJSON = json.load(configFile)
-        return configFileJSON
+    if __name__ == "__main__": 
+        try:
+            with open('config.json') as configFile:
+                configFileJSON = json.load(configFile)
+            return configFileJSON
+        except FileNotFoundError:
+            print("Config file not found.")
+            sys.exit(1) 
+
     else:
         configjson = {
             "user": "root",

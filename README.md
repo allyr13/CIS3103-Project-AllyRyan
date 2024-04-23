@@ -170,6 +170,15 @@ The data includes three csv files that each contain extended statistics for the 
 ## Identifying relationships
 - Players-Have-Statistics
 
+## Visualization files
+### Python files
+- `OPSvHits.py` is a graph that shows the relationship between the teams and all of their players in relation to Hits and On base plus slugging %
+- `aboveOPSval.py` is a graph that shows the relationship between the year and the number of players above .900 OPS. (each year only has one winner so there is only one dot per year - may change this to a bar graph)
+
+### Available Graphs
+- './Graphs/OPSvsHits.png' is the result of `OPSvHits.py`
+- './Graphs/playersAbove900OPS.png' is the result of `aboveOPSval.py`
+
 ## ER Diagram
 ![ER Diagram](ERDiagram.jpeg)
 
