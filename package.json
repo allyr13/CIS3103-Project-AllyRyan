@@ -1,0 +1,17 @@
+{
+    "name": "nodejs-client-server-image-demo",
+    "version": "1.0.0",
+    "description": "nodejs Client-Server Docker demo",
+    "author": "Tim Darr <timothy.darr@okbu.edu>",
+    "main": "index.js",
+    "type": "module",
+    "keywords": [
+        "nodejs"
+    ],
+    "dependencies": {
+        "@aws-sdk/client-dynamodb": "^3.549.0",
+        "@aws-sdk/lib-dynamodb": "^3.563.0",
+        "cors": "^2.8.5",
+        "express": "^4.19.2"
+    }
+}
