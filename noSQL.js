@@ -51,7 +51,28 @@ function CSVToJSON(csvFile, teamName, year){
 let allFiles = getFiles("./Data")
 let i = 0;
 
+// this pushes Yankees 2000 to Dynamo DB (lines 55 - 71)
 let players;
+let theFile = "./Data/" + allFiles[0]
+let fileWithoutPath = theFile.substring(7);
+let periodIdx = fileWithoutPath.indexOf(".");
+let yearAndTeam = fileWithoutPath.substring(0, periodIdx);
+let year = yearAndTeam.substring(0,4);
+let team = yearAndTeam.substring(4);
+
+players = CSVToJSON(theFile, team, year);
+for (let j = 0; j < players.length; j++) {
+    let player = players[j];
+    //console.log(player.TeamName);
+    //console.log(player.Year)
+    let playerID = j + 1;
+    let numYear = Number(player.Year)
+    await updateDB(player, numYear, player.TeamName, playerID);
+}
+
+// tries to push each of the files to Dynamo DB (lines 76 - 94)
+//i++;
+/*
 while (allFiles[i] != null){
     let theFile = "./Data/" + allFiles[i]
     let fileWithoutPath = theFile.substring(7);
@@ -67,10 +88,11 @@ while (allFiles[i] != null){
         //console.log(player.Year)
         let playerID = j + 1;
         let numYear = Number(player.Year)
-        await updateDB(player, numYear, player.TeamName, playerID);
+        //await updateDB(player, numYear, player.TeamName, playerID);
     }
     i++;
 };
+*/
 
 
 
