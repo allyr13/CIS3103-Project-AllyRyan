@@ -179,6 +179,10 @@ The data includes three csv files that each contain extended statistics for the 
 - './Graphs/OPSvsHits.png' is the result of `OPSvHits.py`
 - './Graphs/playersAbove900OPS.png' is the result of `aboveOPSval.py`
 
+### DynamoDB Push
+- File name `noSQL.js`
+- This file pushes one team to DyanmoDB
+
 ## ER Diagram
 ![ER Diagram](ERDiagram.jpeg)
 
