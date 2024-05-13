@@ -1,3 +1,6 @@
+
+import numpy as np
+import matplotlib.pyplot as plt 
 import mysql.connector
 from mysql.connector import errorcode
 import csv
@@ -53,21 +56,23 @@ data = teamCursor.fetchall()
 for i in data:
     print (i)
 
-
-
-
-df = teamCursor.fetchall()
+values =[]
+# creating the dataset
 df = pd.DataFrame(data, columns=['TeamName', 'YearDate', 'PlayerAbv900OPS'])
 for i, row in df.iterrows():
-    plt.title('2000-2023 Players Above .900OPS', fontsize=20)
-        # Create label for x-axis, font size set to 14
-    plt.xlabel('Year', fontsize=14)
-    # Create label for y-axis, font size set to 14
-    plt.ylabel('Number of Players Above 900OPS', fontsize=14)
+    courses = ['TeamName', 'YearDate', 'PlayerAbv900OPS']
+    values += [row['YearDate'], row['PlayerAbv900OPS'], row['TeamName']]
+    plt.bar(courses, values, color ='maroon', 
+		width = 0.4)
+    fig = plt.figure(figsize = (10, 5))
 
-    plt.scatter(row['YearDate'], row['PlayerAbv900OPS'], label=row['TeamName'])
-plt.legend()
+# creating the bar plot
+
+
+plt.xlabel("Courses offered")
+plt.ylabel("No. of students enrolled")
+plt.title("Students enrolled in different courses")
 plt.show()
-plt.savefig('Number of Players Above 1.000OPS')
+
 reservationConnection.commit()
 teamCursor.close()
